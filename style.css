@@ -1,16 +1,62 @@
 .todos{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 100%;
     height: auto;
+    font-family: sans-serif;
 }
 
 .do, .doing, .concluded{
     display: flex;
+    width: 30%;
+    height: auto;
     flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.do{
+    background-color: #fbeec9	;
+    h2{
+        color: #e05d2a;
+    }
+}
+
+.doing{
+    background-color: #c7e2ff	;
+     h2{
+        color: #316b68;
+    }
+}
+
+.concluded{
+    background-color: #c7ffc7;
+     h2{
+        color: #316b3b;
+    }
 }
 
 button{
+    width: fit-content;
+    height: fit-content;
     cursor: pointer;
+}
+
+.newTask{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+
+}
+
+.titleDiv{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
 }

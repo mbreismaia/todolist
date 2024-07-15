@@ -1,5 +1,5 @@
 const todos = document.querySelector('.todos');
-const titles = ["Fazer", "Em Andamento", "Concluido"];
+const titles = ["Fazer", "Em Andamento", "Concluído"];
 
 titles.forEach((t, index) => {
     const taskDiv = document.createElement('div');
@@ -10,10 +10,12 @@ titles.forEach((t, index) => {
     const addButton = document.createElement('button');
     addButton.textContent = "+";
 
-    const removeButton = document.createElement('button');
-    removeButton.textContent = "-";
+    const dv = document.createElement('div');
+    dv.classList.add('titleDiv');
+    dv.appendChild(title);
+    dv.appendChild(addButton);
 
-     switch (index) {
+    switch (index) {
         case 0:
             taskDiv.classList.add('do');
             break;
@@ -25,47 +27,36 @@ titles.forEach((t, index) => {
             break;
     }
 
-    taskDiv.appendChild(title);
-    taskDiv.appendChild(addButton);
-    taskDiv.appendChild(removeButton);
+    taskDiv.appendChild(dv);
     todos.appendChild(taskDiv);
+
+    addButton.addEventListener('click', () => addNewTask(taskDiv));
 });
 
-const allButtons = document.querySelectorAll('button');
-
-allButtons.forEach(b => b.addEventListener('click', 
-    () => {
-        switch (b.textContent) {
-            case "+":
-                addNewTask();
-                break;
-            case "-":
-                removeTask();
-                break;
-            case "edit":
-                editTask();
-                break;
-        }
-    }
-));
-
-const addNewTask = () => {
-    let taskDiv = document.createElement('div');
-    taskDiv.classList.add('taskDiv');
-
-    let newTask = document.createElement('p');
-    newTask.textContent = "novo item";
+const addNewTask = (parentDiv) => {
+    const newtaskDiv = document.createElement('div');
+    newtaskDiv.classList.add('newTask');
     
-    taskDiv.appendChild(newTask);
-    todos.appendChild(taskDiv);
+    let newTask = document.createElement('p');
+    newTask.textContent = "Nova tarefa";
+
+    const removeButton = document.createElement('button');
+    removeButton.textContent = "-";
+
+    const editButton = document.createElement('button');
+    editButton.textContent = "edit";
+
+    newtaskDiv.appendChild(newTask);
+    newtaskDiv.appendChild(removeButton);
+    newtaskDiv.appendChild(editButton);
+    parentDiv.appendChild(newtaskDiv);
+
 }
 
-const removeTask = () => {
-    const taskDiv = document.querySelector('.taskDiv');
-    todos.removeChild(taskDiv);
-}
+// const removeTask = (parentDiv) => {
+   
+// }
 
-const editTask = () => {
-    const taskDiv = document.querySelector('.taskDiv');
-    taskDiv.textContent = "novo item editado";
-}
+// const editTask = (parentDiv) => {
+  
+// }
